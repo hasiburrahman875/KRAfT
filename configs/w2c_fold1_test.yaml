@@ -1,0 +1,45 @@
+eps: 0.001
+eval_mode: True
+
+# optimizer
+lr: 0.0001
+
+# train (unused in eval mode, kept for compatibility)
+data_dir: "/cluster/pixstor/madrias-lab/Hasibur/MOT20/train"
+diffnet: HMINet
+interval: 5
+augment: True
+encoder_dim: 256
+tf_layer: 3
+epochs: 800
+batch_size: 2048
+seed: 123
+eval_every: 20
+gpus: [0, 1, 2, 3]
+
+# testing
+eval_at: 2100
+det_dir: "/cluster/pixstor/madrias-lab/Hasibur/AT/ResDiffMOT-v2-w2c/yolov12fold1"
+img_root: "/cluster/pixstor/madrias-lab/Hasibur/AT/YOLOv12-BoT-SORT-ReID-w2c/BoT-SORT/TrackEval/data/gt/mot_challenge/UAVSwarm/w2c-fold-1/fold1-test/test"
+info_dir: "/cluster/pixstor/madrias-lab/Hasibur/AT/YOLOv12-BoT-SORT-ReID-w2c/BoT-SORT/TrackEval/data/gt/mot_challenge/UAVSwarm/w2c-fold-1/fold1-test/test"
+seqmap_file: "/cluster/pixstor/madrias-lab/Hasibur/AT/YOLOv12-BoT-SORT-ReID-w2c/BoT-SORT/TrackEval/data/gt/mot_challenge/UAVSwarm/w2c-fold-1/seqmaps/fold1-test.txt"
+reid_dir: "/cluster/pixstor/madrias-lab/Hasibur/AT/YOLOv12-BoT-SORT-ReID-w2c/BoT-SORT/logs/MOT20/sbs_S50"
+save_dir: "/cluster/pixstor/madrias-lab/Hasibur/AT/YOLOv12-BoT-SORT-ReID-w2c/BoT-SORT/TrackEval/data/trackers/mot_challenge/fold1-test/fold1-test-kraft/data"
+eval_expname: uavswarm_ddm_1000_deeper
+
+high_thres: 0.25
+med_thres: 0.30
+low_thres: 0.10
+w_assoc_emb: 2.2
+aw_param: 1.7
+preprocess_workers: 16
+lambda_kf: 1.00
+
+# eval output behavior
+show: False
+save_vis: False
+save_video: False
+
+# data parameters
+device: cuda
+eval_device: None
