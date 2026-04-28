@@ -1,18 +1,38 @@
 # KRAfT
 
-Minimal reproducibility snapshot for UAVSwarm W2C fold evaluation.
+Code and reproducibility assets for UAVSwarm W2C fold evaluation.
 
-## Included in this initial commit
-- Fold-1 test config used in our validated reproduction:
-  - `configs/w2c_fold1_test.yaml`
+## Included now
+- `configs/w2c_fold1_test.yaml`
+- `configs/w2c_fold2_test.yaml`
+- `configs/w2c_fold3_test.yaml`
+- `scripts/reproduce_w2c_folds.sh`
+
+## Run
+Run one fold:
+```bash
+PYTHON_BIN=/home/mrpk9/.conda/envs/yolov12_botsort/bin/python \
+  bash scripts/reproduce_w2c_folds.sh 1
+```
+
+Run all folds:
+```bash
+PYTHON_BIN=/home/mrpk9/.conda/envs/yolov12_botsort/bin/python \
+  bash scripts/reproduce_w2c_folds.sh 1 2 3
+```
 
 ## Notes
-- We validated this setup in local environment `yolov12_botsort`.
-- Main fold1 hyperparameters:
+- Local environment used for validation: `yolov12_botsort`.
+- Fold1 tuned hyperparameters:
   - `high_thres: 0.25`
   - `med_thres: 0.30`
   - `low_thres: 0.10`
   - `lambda_kf: 1.00`
+- Fold2/fold3 currently use:
+  - `high_thres: 0.25`
+  - `med_thres: 0.10`
+  - `low_thres: 0.05`
+  - `lambda_kf: 0.60`
 
-## Large weights
-The tracking checkpoint used for evaluation (`_epoch2100.pt`) is ~149 MB and should be tracked via Git LFS or hosted externally.
+## Weights
+The tracking checkpoint (`_epoch2100.pt`) is about 149 MB. Keep it in local storage or publish via Git LFS/external hosting and link it here.
